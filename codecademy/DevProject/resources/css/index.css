@@ -1,0 +1,18 @@
+.banner {
+    background-color: silver;
+    color: red;
+    margin-top: 75px;
+    text-align: center;
+    padding: 100px 0;
+}
+#small-raptor {
+    height: 91.5px;
+    width: 137.5px;
+}
+#raptor {
+    color: red;
+    font-size: 100px;
+}
+.bold {
+    font-weight: 900;
+}

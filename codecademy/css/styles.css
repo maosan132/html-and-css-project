@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightsteelblue;
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+    color: darkblue;
+}
+table {
+    border: 2px solid darkblue;
+    margin-left:auto; 
+    margin-right:auto;
+}
+th {
+    background-color:blue;
+    color: white;
+    text-align: center;
+}
+td {
+    border-top: 1px solid darkblue;
+}
+.code {
+    font-family: monospace;
+    background-color: white;
+}

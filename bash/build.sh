@@ -26,7 +26,7 @@ then
   zip build/build.zip build/*
   echo "Build version $version contains:"
   ls -alt build/*
-  echo "Commiting to Github..."
+  echo "Commiting to git..."
   git add .
   git commit -m "Adding build files"
 else

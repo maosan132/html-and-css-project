@@ -39,14 +39,15 @@ function readLine() {
 
 function main() {
     const S = readLine();
+    const n = () => { throw new Error(); }
     try {
-      const N = parseInt(S);
-      if (isNaN(N) || N === undefined) {
-        throw "Bad String";
-      };
-      console.log(N); 
+        const N = parseInt(S);
+
+      (!N || isNaN(N)) && n();
+
+      console.log(N);
     } catch (e) {
-      console.log(e);
+      console.log("Bad String");
     }
 }
 

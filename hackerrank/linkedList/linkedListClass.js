@@ -7,10 +7,10 @@ class Node{
 
 class LinkedList{
     constructor(){
-        this.head = null;
+        this.head = null
     }
 
-    insertAtBeginning = function(data){
+    insertAtBeginning (data) {
         // A newNode object is created with property data and next = null
             let newNode = new Node(data);
         // The pointer next is assigned head pointer so that both pointers now point at the same node.
@@ -20,7 +20,7 @@ class LinkedList{
             return this.head;
     }
 
-    insertAtEnd = function(data){
+    insertAtEnd (data) {
         // A newNode object is created with property data and next=null
             let newNode = new Node(data);
         // When head = null i.e. the list is empty, then head itself will point to the newNode.
@@ -39,7 +39,7 @@ class LinkedList{
 
     // A helper function getAt() is defined to get to the desired position. 
     //This function can also be later used for performing delete operation from a given position.
-    getAt = function(index){
+    getAt (index) {
         let counter = 0;
         let node = this.head;
         while (node) {
@@ -52,7 +52,7 @@ class LinkedList{
         return null;
     }
     // The insertAt() function contains the steps to insert a node at a given index.
-    insertAt = function(data, index){
+    insertAt (data, index) {
         // if the list is empty i.e. head = null
                 if (!this.head) {
                     this.head = new Node(data);
@@ -73,7 +73,7 @@ class LinkedList{
     }
     //The first node in a linked list is pointed by the head pointer. 
     //To perform a delete operation at the beginning of the list, we will have to make the next node to the head node as the new head.
-    deleteFirstNode = function(){
+    deleteFirstNode () {
         if(!this.head){
             return;
         }
@@ -82,7 +82,7 @@ class LinkedList{
     }    
     //To remove the last node from the list, we will first have to traverse the list to find the last node and at the same time maintain an extra pointer to point at the node before the last node. 
     //To delete the last node, we will then set the next pointer of the node before the last node to null.
-    deleteLastNode = function(){
+    deleteLastNode () {
         if(!this.head){
             return null;
         }
@@ -104,7 +104,7 @@ class LinkedList{
     }
     //Similar to the above case, we will first have to traverse the list to find the desired node to be deleted 
     //and at the same time maintain an extra pointer to point at the node before the desired node.
-    deleteAt = function(index){
+    deleteAt (index) {
         // when list is empty i.e. head = null
             if (!this.head) {
                  this.head = new Node(data);
@@ -126,9 +126,16 @@ class LinkedList{
             return this.head
     }
     //Now, lets delete the complete linked list. This can be done by just one single line of code.
-    deleteList = function(){
+    deleteList () {
         this.head = null;
     }
 }
 
-let list = new LinkedList();
+const stack1 = new LinkedList();
+
+stack1.insertAtEnd(1);
+stack1.insertAtEnd(2);
+stack1.insertAtEnd(3);
+stack1.insertAtEnd(4);
+//printing the linkedlist    
+console.log(JSON.stringify(stack1));

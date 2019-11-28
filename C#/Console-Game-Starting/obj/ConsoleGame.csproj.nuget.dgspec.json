@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ricardo.ribeiro\\Documents\\Estudo\\C#\\Console-Game-Starting\\ConsoleGame.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ricardo.ribeiro\\Documents\\Estudo\\C#\\Console-Game-Starting\\ConsoleGame.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ricardo.ribeiro\\Documents\\Estudo\\C#\\Console-Game-Starting\\ConsoleGame.csproj",
+        "projectName": "ConsoleGame",
+        "projectPath": "C:\\Users\\ricardo.ribeiro\\Documents\\Estudo\\C#\\Console-Game-Starting\\ConsoleGame.csproj",
+        "packagesPath": "C:\\Users\\ricardo.ribeiro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ricardo.ribeiro\\Documents\\Estudo\\C#\\Console-Game-Starting\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ricardo.ribeiro\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

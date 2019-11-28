@@ -1,0 +1,11 @@
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\bin\Debug\netcoreapp2.2\ConsoleGame.deps.json
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\bin\Debug\netcoreapp2.2\ConsoleGame.runtimeconfig.json
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\bin\Debug\netcoreapp2.2\ConsoleGame.runtimeconfig.dev.json
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\bin\Debug\netcoreapp2.2\ConsoleGame.dll
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\bin\Debug\netcoreapp2.2\ConsoleGame.pdb
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\obj\Debug\netcoreapp2.2\ConsoleGame.csprojAssemblyReference.cache
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\obj\Debug\netcoreapp2.2\ConsoleGame.csproj.CoreCompileInputs.cache
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\obj\Debug\netcoreapp2.2\ConsoleGame.AssemblyInfoInputs.cache
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\obj\Debug\netcoreapp2.2\ConsoleGame.AssemblyInfo.cs
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\obj\Debug\netcoreapp2.2\ConsoleGame.dll
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Console-Game-Starting\obj\Debug\netcoreapp2.2\ConsoleGame.pdb

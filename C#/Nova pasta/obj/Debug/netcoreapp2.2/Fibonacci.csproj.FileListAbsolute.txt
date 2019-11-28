@@ -1,0 +1,22 @@
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\bin\Debug\netcoreapp2.2\Fibonacci.deps.json
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\bin\Debug\netcoreapp2.2\Fibonacci.runtimeconfig.json
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\bin\Debug\netcoreapp2.2\Fibonacci.runtimeconfig.dev.json
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\bin\Debug\netcoreapp2.2\Fibonacci.dll
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\bin\Debug\netcoreapp2.2\Fibonacci.pdb
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\obj\Debug\netcoreapp2.2\Fibonacci.csprojAssemblyReference.cache
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\obj\Debug\netcoreapp2.2\Fibonacci.csproj.CoreCompileInputs.cache
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\obj\Debug\netcoreapp2.2\Fibonacci.AssemblyInfoInputs.cache
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\obj\Debug\netcoreapp2.2\Fibonacci.AssemblyInfo.cs
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\obj\Debug\netcoreapp2.2\Fibonacci.dll
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Fibonacci\obj\Debug\netcoreapp2.2\Fibonacci.pdb
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\bin\Debug\netcoreapp2.2\Fibonacci.deps.json
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\bin\Debug\netcoreapp2.2\Fibonacci.runtimeconfig.json
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\bin\Debug\netcoreapp2.2\Fibonacci.runtimeconfig.dev.json
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\bin\Debug\netcoreapp2.2\Fibonacci.dll
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\bin\Debug\netcoreapp2.2\Fibonacci.pdb
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\obj\Debug\netcoreapp2.2\Fibonacci.csprojAssemblyReference.cache
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\obj\Debug\netcoreapp2.2\Fibonacci.csproj.CoreCompileInputs.cache
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\obj\Debug\netcoreapp2.2\Fibonacci.AssemblyInfoInputs.cache
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\obj\Debug\netcoreapp2.2\Fibonacci.AssemblyInfo.cs
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\obj\Debug\netcoreapp2.2\Fibonacci.dll
+C:\Users\ricardo.ribeiro\Documents\Estudo\C#\Nova pasta\obj\Debug\netcoreapp2.2\Fibonacci.pdb

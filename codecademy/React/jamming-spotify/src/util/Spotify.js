@@ -1,9 +1,53 @@
 const clientID = "db88f0fa7dca41e1a6252d61c5269bc8";
 const redirectURI = "http://localhost:3000/";
 let token = "";
-const Spotify = {
-    getUserPlaylists: async function () {
+let userId;
+let headers;
 
+const Spotify = {
+    getCurrentUserId: async function () {
+        if (userId !== undefined) {
+            return userId;
+        } else {
+            this.getAccessToken();
+            try {
+                // Get user info
+                headers = { Authorization: `Bearer ${token}` };
+                const response = await fetch('https://api.spotify.com/v1/me', { headers: headers });
+    
+                if (!response.ok) {
+                    throw new Error('Fail to get user info');
+                };
+    
+                const userInfo = await response.json();
+                userId = userInfo.id;    
+            } catch (error) {
+                console.log(error);
+            }            
+        }
+    },
+    getUserPlaylists: async function () {
+        await this.getCurrentUserId();
+        const endpoint = `https://api.spotify.com/v1/users/${userId}/playlists`;
+        try {
+            const response = await fetch(endpoint, { method: 'GET', headers: headers });
+            if(response.ok){
+                let jsonResponse = await response.json();
+                const playlists = jsonResponse.items.map(playlist => {
+                    return {
+                        ID: playlist.id,
+                        Name: playlist.name, 
+                        Tracks: playlist.tracks, 
+                        URI: playlist.uri
+                    };
+                });
+                //console.log(JSON.stringify(playlists));
+                return playlists;
+            }         
+            throw new Error('Error on retrieving data from Spotify API');   
+        } catch (error) {
+            console.log(error);
+        }
     },
     getAccessToken: function() {
         if (token) {
@@ -22,9 +66,8 @@ const Spotify = {
     search: async function (term) {
         this.getAccessToken();
         const endpoint = `https://api.spotify.com/v1/search?type=track&q=${term}`;
-        const header = { method: 'GET', headers: {Authorization: `Bearer ${token}`} }
         try {
-            const response = await fetch(endpoint, header);
+            const response = await fetch(endpoint, { method: 'GET', headers: {Authorization: `Bearer ${token}`} });
             if(response.ok){
                 let jsonResponse = await response.json();
                 const tracks = jsonResponse.tracks.items.map(track => {
@@ -48,24 +91,14 @@ const Spotify = {
             return
         };
 
-        const token = this.getAccessToken();
         try {
-            // Get user info
-            let headers = { Authorization: `Bearer ${token}` };
-            const urlUserInfo = 'https://api.spotify.com/v1/me';
-            let response = await fetch(urlUserInfo, { headers: headers });
-
-            if (!response.ok) {
-                throw new Error('Fail to get user info');
-            };
-
-            const userInfo = await response.json();
+            await this.getCurrentUserId();
 
             // Create new playlist for user
             headers = { ...headers, 'Content-Type': 'application/json' };
-            const urlPlaylist = `https://api.spotify.com/v1/users/${userInfo.id}/playlists`;
+            const urlPlaylist = `https://api.spotify.com/v1/users/${userId}/playlists`;
 
-            response = await fetch(
+            let response = await fetch(
                 urlPlaylist,
                 {
                     method: 'POST',
@@ -89,6 +122,7 @@ const Spotify = {
                     headers: headers,
                     body: JSON.stringify({ uris: tracks })
                 });
+            //await this.getUserPlaylists();
             if (!response.ok) {
                 throw new Error('Fail to add tracks to playlist');
             }

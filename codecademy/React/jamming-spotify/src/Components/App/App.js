@@ -15,7 +15,14 @@ class App extends React.Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
-    this.state = { playlistName: 'New playlist', playlistTracks: [], searchResults: [] };
+    this.selectPlaylist = this.selectPlaylist.bind(this);
+    this.state = { 
+      playlistId: null, 
+      playlistName: 'New playlist', 
+      playlistTracks: [], 
+      searchResults: [],
+      playlists: []
+    };
   }
 
   addTrack (track) {
@@ -39,18 +46,39 @@ class App extends React.Component {
   savePlaylist() {
     const trackUris = this.state.playlistTracks.map(track => track.URI);
     if (trackUris.length > 0) {
-      Spotify.savePlaylist(this.state.playlistName, trackUris).then(results => {
-        this.setState({ searchResults: [], playlistName: 'New Playlist', playlistTracks: [] });
-      });
+      Spotify.savePlaylist(this.state.playlistId, this.state.playlistName, trackUris).then(results => {
+        Spotify.getUserPlaylists().then(playlists=> {
+          this.setState({ 
+              searchResults: [], 
+              playlistName: 'New Playlist', 
+              playlistTracks: [],
+              playlists: playlists
+          });
+        });
+    });
     } else {
       console.log('No tracks to add');
-    }
+    };
+
   }
 
   search(term) {
     Spotify.search(term).then(tracks => {
       this.setState({ searchResults: tracks });
     });
+  }
+
+  selectPlaylist(playlistId, playlistName) {
+    Spotify.getPlaylist(playlistId).then(playlistTracks => {
+      this.setState({playlistId: playlistId, playlistName: playlistName, playlistTracks: playlistTracks});
+    });
+  }
+
+  componentWillMount() {
+    Spotify.getUserPlaylists().then(playlists=> {
+        this.setState({ playlists: playlists });
+        console.log('componentWillMount');
+   });
   }
 
   render() {
@@ -72,7 +100,10 @@ class App extends React.Component {
               onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
             />
-            <PlaylistList />
+            <PlaylistList 
+              playlists={this.state.playlists}
+              selectPlaylist={this.selectPlaylist}
+            />
           </div>
         </div>
       </div>

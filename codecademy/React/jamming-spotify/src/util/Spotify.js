@@ -86,51 +86,74 @@ const Spotify = {
             console.log(error);
         }
     },
-    savePlaylist: async function (name, tracks) {
+    savePlaylist: async function (id, name, tracks) {
         if (!tracks || name === undefined) {
             return
         };
 
         try {
             await this.getCurrentUserId();
-
-            // Create new playlist for user
+            // Create new playlist or update an existing one 
             headers = { ...headers, 'Content-Type': 'application/json' };
-            const urlPlaylist = `https://api.spotify.com/v1/users/${userId}/playlists`;
 
-            let response = await fetch(
-                urlPlaylist,
-                {
-                    method: 'POST',
-                    headers: headers,
-                    body: JSON.stringify({ name: name })
-                }
-            );
+            const urlPlaylist = id ? `https://api.spotify.com/v1/users/${userId}/playlists/${id}` :  `https://api.spotify.com/v1/users/${userId}/playlists`;; 
+
+            let options = {
+                method: id ? 'PUT' : 'POST',
+                headers: headers,
+                body: JSON.stringify({ name: name })
+            };
+
+            let response = await fetch(urlPlaylist, options);
 
             if (!response.ok) {
-                throw new Error('Fail to create playlist');
-            }
+                throw new Error(`Fail to ${id ? 'update' : 'create'} playlist`);
+            };
 
-            const playlistInfo = await response.json();
-            const playlistId = playlistInfo.id;
+            let playlistInfo;
+            if (!id) {
+                playlistInfo = await response.json();
+            };
+
+            const playlistId = id ? id : playlistInfo.id;
             const urlPlaylistTracks = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
 
-            response = await fetch(
-                urlPlaylistTracks,
-                {
-                    method: 'POST',
-                    headers: headers,
-                    body: JSON.stringify({ uris: tracks })
-                });
-            //await this.getUserPlaylists();
+            options = {
+                method: id ? 'PUT' : 'POST',
+                headers: headers,
+                body: JSON.stringify({ uris: tracks })
+            };
+            response = await fetch(urlPlaylistTracks, options);
+
             if (!response.ok) {
                 throw new Error('Fail to add tracks to playlist');
             }
         } catch (error) {
             console.log(error);
         }
-
-
+    },
+    getPlaylist: async function (playlistId) {
+        await this.getCurrentUserId();
+        const endpoint = `https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`;
+        try {
+            const response = await fetch(endpoint, { method: 'GET', headers: headers });
+            if(response.ok){
+                let jsonResponse = await response.json();
+                const tracks = jsonResponse.items.map(item => {
+                    return {
+                        ID: item.track.id,
+                        Artist: item.track.artists[0].name, 
+                        Name: item.track.name, 
+                        Album: item.track.album.name, 
+                        URI: item.track.uri
+                    };
+                });
+                return tracks;
+            }         
+            throw new Error('Error on retrieving data from Spotify API');   
+        } catch (error) {
+            console.log(error);
+        }
     }
 };
 

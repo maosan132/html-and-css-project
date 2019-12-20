@@ -1,7 +1,7 @@
 import React from 'react';
 import {Track} from '../Track/Track';
 import './TrackList.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export class TrackList extends React.Component {
     render() {
@@ -21,9 +21,9 @@ export class TrackList extends React.Component {
     }
 }
 
-// TrackList.propTypes = {
-//     tracks:     PropTypes.object.isRequired,
-//     onAdd:      PropTypes.func.isRequired,
-//     onRemove:   PropTypes.func.isRequired,
-//     isRemoval:  PropTypes.bool.isRequired
-// }
+TrackList.propTypes = {
+    tracks:     PropTypes.object.isRequired,
+    onAdd:      PropTypes.func.isRequired,
+    onRemove:   PropTypes.func.isRequired,
+    isRemoval:  PropTypes.bool.isRequired
+}

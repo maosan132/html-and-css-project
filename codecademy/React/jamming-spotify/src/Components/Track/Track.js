@@ -1,6 +1,6 @@
 import React from 'react';
 import './Track.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export class Track extends React.Component {
     constructor(props) {
@@ -36,7 +36,9 @@ export class Track extends React.Component {
     }
 }
 
-// Track.propTypes = {
-//     track: PropTypes.object.isRequired,
-//     isRemoval: PropTypes.bool.isRequired
-// }
+Track.propTypes = {
+    track: PropTypes.object.isRequired,
+    isRemoval: PropTypes.bool.isRequired,
+    onAdd: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired,
+}

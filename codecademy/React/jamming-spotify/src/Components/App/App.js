@@ -16,6 +16,7 @@ class App extends React.Component {
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
     this.selectPlaylist = this.selectPlaylist.bind(this);
+    this.removePlaylist = this.removePlaylist.bind(this);
     this.state = { 
       playlistId: null, 
       playlistName: 'New playlist', 
@@ -39,6 +40,25 @@ class App extends React.Component {
     this.setState({playlistTracks: updatedPlaylist});
   }
 
+  removePlaylist (playlistId, playlistName) {
+    const result = window.confirm(`Are you sure you want to delete Playlist ${playlistName}?`);
+    if (result) {
+      Spotify.unfollowPlaylist(playlistId).then(results => {
+        Spotify.getUserPlaylists().then(playlists => {
+          this.setState({ 
+              playlistId: null,
+              searchResults: [], 
+              playlistName: 'New Playlist', 
+              playlistTracks: [],
+              playlists: playlists
+          });
+        }); 
+        return results;
+      });
+    }
+  }
+
+
   updatePlaylistName(name) {
     this.setState({playlistName: name});
   }
@@ -47,24 +67,31 @@ class App extends React.Component {
     const trackUris = this.state.playlistTracks.map(track => track.URI);
     if (trackUris.length > 0) {
       Spotify.savePlaylist(this.state.playlistId, this.state.playlistName, trackUris).then(results => {
-        Spotify.getUserPlaylists().then(playlists=> {
+        Spotify.getUserPlaylists().then(playlists => {
           this.setState({ 
+              playlistId: null,
               searchResults: [], 
               playlistName: 'New Playlist', 
               playlistTracks: [],
               playlists: playlists
           });
         });
+        return results;
     });
     } else {
       console.log('No tracks to add');
-    };
+    }
 
   }
 
   search(term) {
     Spotify.search(term).then(tracks => {
-      this.setState({ searchResults: tracks });
+      this.setState({
+        playlistId: null,
+        searchResults: tracks, 
+        playlistName: 'New Playlist', 
+        playlistTracks: []
+      });
     });
   }
 
@@ -74,10 +101,9 @@ class App extends React.Component {
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Spotify.getUserPlaylists().then(playlists=> {
         this.setState({ playlists: playlists });
-        console.log('componentWillMount');
    });
   }
 
@@ -103,6 +129,7 @@ class App extends React.Component {
             <PlaylistList 
               playlists={this.state.playlists}
               selectPlaylist={this.selectPlaylist}
+              onRemovepl={this.removePlaylist}
             />
           </div>
         </div>

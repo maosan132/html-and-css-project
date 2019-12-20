@@ -17,13 +17,14 @@ const Spotify = {
     
                 if (!response.ok) {
                     throw new Error('Fail to get user info');
-                };
+                }
     
                 const userInfo = await response.json();
+                // eslint-disable-next-line require-atomic-updates
                 userId = userInfo.id;    
             } catch (error) {
                 console.log(error);
-            }            
+            }
         }
     },
     getUserPlaylists: async function () {
@@ -38,10 +39,10 @@ const Spotify = {
                         ID: playlist.id,
                         Name: playlist.name, 
                         Tracks: playlist.tracks, 
-                        URI: playlist.uri
+                        URI: playlist.uri,
+                        url: playlist.images[2].url
                     };
                 });
-                //console.log(JSON.stringify(playlists));
                 return playlists;
             }         
             throw new Error('Error on retrieving data from Spotify API');   
@@ -89,14 +90,14 @@ const Spotify = {
     savePlaylist: async function (id, name, tracks) {
         if (!tracks || name === undefined) {
             return
-        };
+        }
 
         try {
             await this.getCurrentUserId();
             // Create new playlist or update an existing one 
             headers = { ...headers, 'Content-Type': 'application/json' };
 
-            const urlPlaylist = id ? `https://api.spotify.com/v1/users/${userId}/playlists/${id}` :  `https://api.spotify.com/v1/users/${userId}/playlists`;; 
+            const urlPlaylist = id ? `https://api.spotify.com/v1/users/${userId}/playlists/${id}` :  `https://api.spotify.com/v1/users/${userId}/playlists`; 
 
             let options = {
                 method: id ? 'PUT' : 'POST',
@@ -108,12 +109,12 @@ const Spotify = {
 
             if (!response.ok) {
                 throw new Error(`Fail to ${id ? 'update' : 'create'} playlist`);
-            };
+            }
 
             let playlistInfo;
             if (!id) {
                 playlistInfo = await response.json();
-            };
+            }
 
             const playlistId = id ? id : playlistInfo.id;
             const urlPlaylistTracks = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;

@@ -1,19 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './PlaylistList.css';
 import { PlaylistListItem } from '../PlaylistListItem/PlaylistListItem';
-//import Spotify from '../../util/Spotify';
 
 export class PlaylistList extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {playlists: []};
-    // }
-    
-    // componentWillMount() {
-    //      Spotify.getUserPlaylists().then(playlists=> {
-    //          this.setState({ playlists: playlists });
-    //     });
-    // }
     render() {
         return (
             <div className="PlaylistList">
@@ -23,10 +13,18 @@ export class PlaylistList extends React.Component {
                         key={playlist.ID} 
                         playlistId={playlist.ID}
                         playlistName={playlist.Name}
+                        playlistUrl={playlist.url}
                         selectPlaylist={this.props.selectPlaylist}
+                        onRemovepl={this.props.onRemovepl}
                     />                    
                 )}
             </div>               
         )
     } 
 }
+
+PlaylistList.propTypes = {
+    playlists: PropTypes.array.isRequired,
+    selectPlaylist: PropTypes.func.isRequired,
+    onRemovepl: PropTypes.func.isRequired,
+};

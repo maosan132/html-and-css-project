@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hello World!</title>
-</head>
-<body>
-    <p>
-            Hi Ricardo, How are you?
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class=" flex-grid" id="header">
 
-    </p>
-</body>
+            <header id="header">
+                <img id="header-img" class="logo" src="logo landing page.png"/>
+                <nav id="nav-bar">
+                    <ul class="navbar-list">
+                        <li class="navbar-item"><a class="navbar-link" href="#intro">Intro</a></li>
+                        <li class="navbar-item">
+                        <a class="navbar-link" href="#" data-popover="#codeNavPopover">Code</a>
+                        </li>
+                        <li class="navbar-item"><a class="navbar-link" href="#examples">Examples</a></li>
+                        <li class="navbar-item">
+                        <a class="navbar-link" href="#" data-popover="#moreNavPopover">More</a>
+                        </li>
+                    </ul>
+                </nav>
+        </div>
+        <div class="flex-grid">
+            
+            <div class="col">
+                <video width="320" height="240" controls>
+                    <source src="movie.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                  Your browser does not support the video tag.
+                  </video>
+            </div>
+            </div>
+        <div class="flex-grid">
+            
+                        <div class="col">
+<p>Please suscribe to our mailing list:</p>
+          <form id="form" action="https://www.freecodecamp.com/email-submit">
+              <input name="email" id="email" type="email" placeholder="Enter your email address" required="">
+              <input id="submit" type="submit" value="Get Started" class="btn">
+              </form>
+            </div>
+          </div>
+    </body>
 </html>
